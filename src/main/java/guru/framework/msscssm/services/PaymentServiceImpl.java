@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;
+import org.springframework.statemachine.action.Action;
 import org.springframework.statemachine.config.StateMachineFactory;
+import org.springframework.statemachine.guard.Guard;
 import org.springframework.statemachine.support.DefaultStateMachineContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +20,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class PaymentServiceImpl implements PaymentService {
-
     private final PaymentRepository paymentRepository;
     private final StateMachineFactory<PaymentState,PaymentEvent> stateMachineFactory;
     private final PaymentStateChangeInterceptor paymentStateChangeInterceptor;
